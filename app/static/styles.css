@@ -1,0 +1,65 @@
+body {
+    font-family: "Fira Code", monospace;
+    background: #fff;
+    
+    margin: 0;
+    padding: 0;
+}
+.nightmode:checked ~body {
+    background: #222;
+}
+
+.navbar {
+    position: sticky; /* Makes it stick to the viewport when scrolling */
+    top: 0; /* The sticky threshold */
+    background: #333;
+    padding: 1rem;
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Center the items vertically */
+    justify-content: flex-start; /* Align items to the left */
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+.navbouton {
+    color: #fff; 
+    margin: 0 10px; 
+    text-decoration: none; /* Remove underline from links */
+    font-size: 1rem; 
+}
+
+.navbouton:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
+
+main {
+    padding: 2rem;
+}
+#chat {
+    background: #fff;
+    max-width: 40rem;
+    /*margin: 0 auto;*/
+    margin-right: auto;
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+
+
+#chat-messages {
+    color: #222;
+    height: 30rem;
+    overflow-y: scroll;
+    margin-bottom: 1rem;
+}
+
+
+#message-input {
+    width: 80%;
+    padding: 0.5rem;
+}
+button {
+    padding: 0.5rem 1rem;
+    background: #333;
+    color: #fff;
+}
