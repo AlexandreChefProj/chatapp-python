@@ -9,7 +9,7 @@ services:
     volumes:
       - .:/app
     environment:
-      - FLASK_ENV=development
+      - FLASK_ENV=docker
       - MONGO_URI=mongodb://mongo-db:27017/chatapp
     command: >
       /app/wait-for-it.sh mongo-db:27017 -- 
