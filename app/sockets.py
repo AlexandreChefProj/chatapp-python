@@ -2,7 +2,7 @@ from flask_socketio import emit, join_room, leave_room
 from flask_login import current_user
 from datetime import datetime
 from app import socketio
-from app.database import save_message, get_chat_history
+from app.database import save_message
 
 # --- Events ---
 @socketio.on('connect')
