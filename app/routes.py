@@ -79,7 +79,6 @@ def login():
             if check_password(user_data['password'], password):
                 print(user_data)
                 user = User.from_dict(user_data)
-                print("here's the super importent print!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 print(user)
                 login_user(user)
                 flash('Login successful!', 'success')

@@ -13,7 +13,7 @@ services:
       - MONGO_URI=mongodb://mongo-db:27017/chatapp
     command: >
       /app/wait-for-it.sh mongo-db:27017 -- 
-      gunicorn -w 2 -b 0.0.0.0:5000 --timeout 120 app:app
+      gunicorn -w 1 --worker-class eventlet -b 0.0.0.0:5000 app:app
     depends_on:
       - mongo
 

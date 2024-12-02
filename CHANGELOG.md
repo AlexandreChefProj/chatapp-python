@@ -5,6 +5,24 @@ have a big change that makes docker finally work. What I forgot to do is to chan
 the docker-compose so it uses the configuration specialised for docker. Now that I 
 made a big change I'll start to (try) hold the changelog.
 
+## 1.1.1
+
+### fix:
+fixed docker-compose.yml : new command for gunicorn eventlet to help SocketIO.
+__init__.py : new lign to let socketIO in async mode.
+various files : tweaks here and there, removal of prints, addition of prints.
+
+### Description:
+My smartass saw the app run and was happy but I didn't even try to send a message lol.
+When I did well nothing happened, so I wanted to find the solution today. What was
+done here is, by looking into the error messages from flask, i was able to understand
+that to run, the socket flask needs a WebSocket server of some sort. Python uses 
+eventlet by default, but you have to imply it to docker, so I did, and you also
+have to change the docker file to make sure that it's running well, so I did!
+nothing too crazy but i'm still happy I could fix that in not too long haha.
+
+02/12/2024 17:33
+
 ## 1.1
 
 ### fix:

@@ -28,6 +28,7 @@ def handle_send_message(data):
     Save the message to the database and broadcast it to all clients.
     """
     if not current_user.is_authenticated:
+        print("tried sending a message but is not connected")
         emit('error', {'message': 'Authentication required'})
         return
 
@@ -37,8 +38,9 @@ def handle_send_message(data):
         return
 
     # Save the message in the database
+    
     save_message(current_user.username, message)
-
+    print(current_user.username + " said: " + message)
     # Broadcast the message to all connected clients
     emit('new_message', {
         'username': current_user.username,

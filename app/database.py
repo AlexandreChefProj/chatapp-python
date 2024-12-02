@@ -43,6 +43,7 @@ def check_password(stored_password, provided_password):
 # --- Chat Message Management ---
 
 def save_message(username, message):
+    print("saving a message.")
     """Save a chat message to the database."""
     db.messages.insert_one({
         "username": username,
@@ -52,5 +53,5 @@ def save_message(username, message):
 
 
 def get_chat_history(limit=50):
-    """Retrieve the latest chat messages."""
+    print("retrieved last chat history")
     return list(db.messages.find().sort("timestamp", -1).limit(limit))[::-1]  # Reverse to show oldest first

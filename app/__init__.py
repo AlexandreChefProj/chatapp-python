@@ -26,7 +26,7 @@ else:
 
 # Set the secret key for Flask session management (using environment variable or generate one)
 app.secret_key = os.getenv('FLASK_SECRET_KEY', 'Imthe45678383920029lordofthese993993393993;;;soils')  # You can set this in .env
-
+socketio = SocketIO(app, async_mode='eventlet')
 # Initialize MongoDB (using pymongo)
 
 client = MongoClient(app.config['MONGO_URI'])
