@@ -5,22 +5,25 @@ services:
     build: .
     container_name: flask-chat-app
     ports:
-      - "5000:5000"  # Expose port 5000 on the host machine
+      - "5000:5000"
     volumes:
-      - .:/app  # Mount the current directory to the /app directory inside the container
+      - .:/app
     environment:
       - FLASK_ENV=development
       - MONGO_URI=mongodb://mongo-db:27017/chatapp
+    command: >
+      /app/wait-for-it.sh mongo-db:27017 -- 
+      gunicorn -w 2 -b 0.0.0.0:5000 --timeout 120 app:app
     depends_on:
-      - mongo  # Ensure MongoDB starts before the Flask app
+      - mongo
 
   mongo:
     image: mongo:latest
     container_name: mongo-db
     ports:
-      - "27017:27017"  # Expose MongoDB port
+      - "27017:27017"
     volumes:
-      - mongo-data:/data/db  # Use a named volume to persist MongoDB data
+      - mongo-data:/data/db
 
 volumes:
   mongo-data:
