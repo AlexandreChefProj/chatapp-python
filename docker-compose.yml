@@ -10,7 +10,7 @@ services:
       - .:/app  # Mount the current directory to the /app directory inside the container
     environment:
       - FLASK_ENV=development
-      - MONGO_URI=mongodb://mongo:27017/chatapp  # MongoDB connection URI
+      - MONGO_URI=mongodb://mongo-db:27017/chatapp
     depends_on:
       - mongo  # Ensure MongoDB starts before the Flask app
 
