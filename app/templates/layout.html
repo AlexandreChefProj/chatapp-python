@@ -13,7 +13,10 @@
 <body>
     <div class="navbar">
         
-        <a href="{{ url_for('home') }}" class="navbouton">Home</a>
+        <a href="{{ url_for('home') }}" class="navbouton">
+            <img src="{{ url_for('static', filename='logo.jpg') }}" height="65" width="65"  alt="Whale-Shark">
+        </a>
+        <a class="navbouton">Whale-Shark</a>
         {% if current_user.is_authenticated %}
             <a class="navbouton">Connected as {{ username }}</a>
             <a href="{{ url_for('logout') }}" class="navbouton">Logout</a>
