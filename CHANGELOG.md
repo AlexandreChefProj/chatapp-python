@@ -5,6 +5,18 @@ have a big change that makes docker finally work. What I forgot to do is to chan
 the docker-compose so it uses the configuration specialised for docker. Now that I 
 made a big change I'll start to (try) hold the changelog.
 
+## 1.1.2
+
+### fix:
+fixed wait-for-it.sh : CRLF to LF.
+
+### Description:
+The issue there was with wait for it sh is that the bash commands were written using Windows' line ending like \r\n
+instead of \n for Unix. I tried to use docker on another computer and the issue was raised here, it is't the case on
+the first computer I tested the code on. Anyways, I did the change, no big deal.
+
+03/12/2024 14:19
+
 ## 1.1.1
 
 ### fix:
