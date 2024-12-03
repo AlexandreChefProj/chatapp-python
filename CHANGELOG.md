@@ -5,6 +5,17 @@ have a big change that makes docker finally work. What I forgot to do is to chan
 the docker-compose so it uses the configuration specialised for docker. Now that I 
 made a big change I'll start to (try) hold the changelog.
 
+## 1.1.3
+
+### updates:
+updated layout.html : new image
+updated static : styles.css and logo.jpg
+
+### Description:
+I just wanted to make the app cuter like I know I don't get points for this but you know I like it, it's fun isn't it!
+
+03/12/24 19:05
+
 ## 1.1.2
 
 ### fix:
