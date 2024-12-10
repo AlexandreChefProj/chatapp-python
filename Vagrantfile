@@ -1,41 +1,30 @@
 Vagrant.configure("2") do |config|
-  servers=[
-      {
-        :hostname => "control",
-        :box => "bento/ubuntu-18.04",
-        :ip => "192.168.56.50",
-        :ssh_port => '2200'
-      },
-      {
-        :hostname => "node1",
-        :box => "bento/ubuntu-18.04",
-        :ip => "192.168.56.51",
-        :ssh_port => '2201'
-      },
-      {
-        :hostname => "node2",
-        :box => "bento/ubuntu-18.04",
-        :ip => "192.168.56.52",
-        :ssh_port => '2202'
-      },
-      {
-        :hostname => "node3",
-        :box => "bento/ubuntu-18.04",
-        :ip => "192.168.56.53",
-        :ssh_port => '2203'
-      }
-    ]
+  
+  config.vm.box = "ubuntu/focal64"
 
-  servers.each do |machine|
-      config.vm.define machine[:hostname] do |node|
-          node.vm.box = machine[:box]
-          node.vm.hostname = machine[:hostname]
-          node.vm.network :private_network, ip: machine[:ip]
-          node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
-          node.vm.provider :virtualbox do |vb|
-              vb.customize ["modifyvm", :id, "--memory", 512]
-              vb.customize ["modifyvm", :id, "--cpus", 1]
-          end
-      end
-  end
+  config.vm.hostname = "flask-chat-app"
+  config.vm.define "flask-chat-app"
+
+  config.vm.network "forwarded_port", guest: 5000, host: 5000 
+  config.vm.network "forwarded_port", guest: 27017, host: 27017 
+
+  config.vm.synced_folder ".", "/home/vagrant/app"
+
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update
+    sudo apt-get install -y python3 python3-pip python3-venv mongodb
+
+    cd /home/vagrant/app
+
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install --upgrade pip
+    pip install -r requirements.txt
+
+    sudo systemctl start mongodb
+    sudo systemctl enable mongodb
+
+    export FLASK_ENV=development
+    nohup python3 app.py &
+  SHELL
 end

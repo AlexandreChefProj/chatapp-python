@@ -17,3 +17,15 @@
     user:
       name: vagrant
       groups: docker
+  
+  - name: Check Flask application health
+    uri:
+      url: http://192.168.56.51:5000/health
+      method: GET
+      status_code: 200
+    register: health_check
+
+  - name: Print health status
+    debug:
+      msg: "Health check passed!" 
+    when: health_check.status == 200

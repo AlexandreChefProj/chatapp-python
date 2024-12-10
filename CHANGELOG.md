@@ -5,6 +5,19 @@ have a big change that makes docker finally work. What I forgot to do is to chan
 the docker-compose so it uses the configuration specialised for docker. Now that I 
 made a big change I'll start to (try) hold the changelog.
 
+## 1.2
+
+### fix:
+fixed vagrantfile : created virtual environment
+
+### Description:
+I totallly reforged my Vagrantfile and I created a virtual environment 
+because I encountered issues with dependencies that were already existing
+so I found a solution : create a virtual environment. This way I can have the right version for my libraries.
+Next I need to update my ansible folder.
+
+10/12/24 12:04
+
 ## 1.1.3
 
 ### updates:
