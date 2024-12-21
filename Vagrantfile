@@ -25,6 +25,6 @@ Vagrant.configure("2") do |config|
     sudo systemctl enable mongodb
 
     export FLASK_ENV=development
-    nohup python3 app.py &
+    nohup python3 run.py &
   SHELL
 end

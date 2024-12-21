@@ -13,21 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Étape 1 : Récupérer le code source
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Étape 2 : Configurer Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9.20" 
+          python-version: "3.9"  # Utilisez simplement 3.9, sans précision mineure
 
+      # Étape 3 : Installer les dépendances
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest mongomock
 
+      # Étape 4 : Exécuter les tests
       - name: Run tests
-        env:  # Set PYTHONPATH to project root
-          PYTHONPATH: ${{ github.workspace }}
+        env:
+          PYTHONPATH: ${{ github.workspace }}  # Définir PYTHONPATH au niveau racine du projet
         run: pytest tests/
