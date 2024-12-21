@@ -54,4 +54,4 @@ def save_message(username, message):
 
 def get_chat_history(limit=50):
     print("retrieved last chat history")
-    return list(db.messages.find().sort("timestamp", -1).limit(limit))[::-1]  # Reverse to show oldest first
+    return list(db.messages.find().sort("timestamp", ASCENDING).limit(limit))

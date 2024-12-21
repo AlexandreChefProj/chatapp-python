@@ -56,7 +56,10 @@ def test_save_and_get_chat_history(mock_db, monkeypatch):
     # Fetch chat history
     chat_history = get_chat_history()
 
+    # Debug output for inspection
+    print("Chat history retrieved:", chat_history)
+
     # Verify messages are in the correct order
-    assert len(chat_history) == 2
-    assert chat_history[0]['message'] == "Hello, World!"
-    assert chat_history[1]['message'] == "Hi there!"
+    assert len(chat_history) == 2, f"Unexpected number of messages: {len(chat_history)}"
+    assert chat_history[0]['message'] == "Hello, World!", f"First message mismatch: {chat_history[0]}"
+    assert chat_history[1]['message'] == "Hi there!", f"Second message mismatch: {chat_history[1]}"
