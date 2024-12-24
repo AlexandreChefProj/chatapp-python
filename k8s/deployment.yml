@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flask-chat-app
-        image: alexandrefenayrou/flask-chat-app:latest  # Image depuis Docker Hub
+        image: alexandrefenayrou/flask-chat-app:latest
         ports:
         - containerPort: 5000
         env:
