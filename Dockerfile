@@ -7,21 +7,21 @@ ENV PYTHONUNBUFFERED 1
 # Set the working directory in the container
 WORKDIR /app
 
-# Install system dependencies (if any) and copy the requirements file
+# Copy the requirements.txt first (to cache dependencies)
 COPY requirements.txt /app/
-
-
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code into the container
+# Copy the rest of the application code into the container (this includes everything in your project)
 COPY . /app/
+
+# Make sure the wait-for-it.sh script is executable
 COPY wait-for-it.sh /app/wait-for-it.sh
 RUN chmod +x /app/wait-for-it.sh
 
 # Expose the port that Flask will run on
 EXPOSE 5000
 
-# Command to run the Flask app using Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+# Start the Flask app using Gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "run:app"]
