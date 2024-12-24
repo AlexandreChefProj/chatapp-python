@@ -12,7 +12,6 @@ def handle_connect():
         emit('connected', {'username': current_user.username})
         print(f"{current_user.username} connected.")
     else:
-        print("Unauthenticated user attempted to connect.")
         emit('error', {'message': 'Authentication required'})
         return False  # Disconnect unauthenticated users
 
@@ -21,8 +20,6 @@ def handle_disconnect():
     """Handle a disconnection."""
     if current_user.is_authenticated:
         print(f"{current_user.username} disconnected.")
-    else:
-        print("An unauthenticated user disconnected.")
 
 @socketio.on('send_message')
 def handle_send_message(data):
@@ -31,7 +28,7 @@ def handle_send_message(data):
     Save the message to the database and broadcast it to all clients.
     """
     if not current_user.is_authenticated:
-        print(f"{current_user.username} tried sending a message but is not authenticated.")
+        print("tried sending a message but is not connected")
         emit('error', {'message': 'Authentication required'})
         return
 
@@ -41,14 +38,9 @@ def handle_send_message(data):
         return
 
     # Save the message in the database
-    try:
-        save_message(current_user.username, message)
-        print(f"{current_user.username} said: {message}")
-    except Exception as e:
-        print(f"Error saving message: {e}")
-        emit('error', {'message': 'Failed to save message'})
-        return
-
+    
+    save_message(current_user.username, message)
+    print(current_user.username + " said: " + message)
     # Broadcast the message to all connected clients
     emit('new_message', {
         'username': current_user.username,
