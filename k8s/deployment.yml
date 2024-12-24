@@ -19,11 +19,6 @@ spec:
         image: alexandrefenayrou/flask-chat-app:latest  # Image depuis Docker Hub
         ports:
         - containerPort: 5000
-        env:
-        - name: FLASK_ENV
-          value: "docker"
-        - name: MONGO_URI
-          value: "mongodb://mongo-db:27017/chatapp"
         volumeMounts:
         - name: app-storage
           mountPath: /app/data
