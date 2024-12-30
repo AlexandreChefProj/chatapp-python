@@ -1,5 +1,5 @@
 # DEVOPS FALL 2024 PROJECT featuring Alexandre Fenayrou and Nicolas Thorrez
-In this report, we will go over all the features of our app and how to deploy it and such. First let's check how much of the work we've done!
+In this report, we will go over all the features of our app and how to deploy it and such.
 ## 1: The app
 ### What does it do?
 Our app is a chat app. As simple as it may seem, we created an app that lets a user chat in real time in a global chat-room with other users.
