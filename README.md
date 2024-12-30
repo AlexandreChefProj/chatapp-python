@@ -55,7 +55,9 @@ Once they are added to kube, we have 3 pods in total: 2 for the deployment and 1
 
 Once our pods are running, we've tested their good working by exposing them to a port of our computer and using them in local : ![portforward.png](/images/image9.png)
 
-
+We *HIGLY* recommend you : 
+- log into docker and push the image of this Dockerfile in your account
+- change lign 19 of [deployment.yml](/k8s/deployment.yml) where you can find alexandrefenayrou/flask-chat-app:latest to put your image
 
 if you find anything sketchy in the repo about the k8s file, just know that Nicolas Thorrez did it on Alexandre Fenayrou's machine and pushed in there. To get the blame updated, commits were done to revert and then repush.
 
